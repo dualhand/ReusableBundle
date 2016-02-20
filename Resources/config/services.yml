@@ -1,0 +1,8 @@
+services:
+    mapping.listener:
+        class: ReusableBundle\EventListener\MappingSubscriber
+        arguments:
+          - %grb.cart.class%
+          - %grb.cart_line.class%
+        tags:
+            - { name: doctrine.event_listener, event: loadClassMetadata }

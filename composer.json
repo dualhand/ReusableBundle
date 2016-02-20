@@ -1,0 +1,21 @@
+{
+    "name": "gerfigna/reusable-bundle",
+    "description" : "A demo bundle",
+    "type" : "symfony-bundle",
+    "keywords" : [
+        "demo bundle"
+    ],
+    "license" : [
+        "MIT"
+    ],
+    "require" : {
+        "php": ">=5.3.9",
+        "symfony/symfony": "2.8.*",
+        "doctrine/orm": "^2.4.8",
+        "doctrine/doctrine-bundle": "~1.4",
+        "sonata-project/easy-extends-bundle": "^2.1"
+    },
+    "autoload": {
+        "psr-4": { "ReusableBundle\\": "" }
+    }
+}
