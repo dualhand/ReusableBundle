@@ -1,0 +1,21 @@
+{
+    "name": "dualhand/reusable-bundle",
+    "description" : "A demo bundle",
+    "type" : "symfony-bundle",
+    "keywords" : [
+        "demo bundle"
+    ],
+    "license" : [
+        "MIT"
+    ],
+    "require" : {
+        "php": ">=5.5.9",
+        "symfony/symfony": "3.1.*",
+        "doctrine/orm": "^2.5",
+        "doctrine/doctrine-bundle": "^1.6",
+        "sonata-project/easy-extends-bundle": "^2.1"
+    },
+    "autoload": {
+        "psr-4": { "DualHand\\ReusableBundle\\": "" }
+    }
+}

@@ -1,0 +1,14 @@
+parameters:
+    DualHand_reusable.abstract_cart.class: 'DualHand\ReusableBundle\Model\AbstractCart'
+    DualHand_reusable.abstract_cart_line.class: 'DualHand\ReusableBundle\Model\AbstractCartLine'
+    DualHand_reusable.abstract_purchasable.class: 'DualHand\ReusableBundle\Model\AbstractPurchasable'
+
+services:
+    DualHand_mapping_listener:
+        class: DualHand\ReusableBundle\EventListener\MappingSubscriber
+        arguments:
+          - "%DualHand_reusable.cart.class%"
+          - "%DualHand_reusable.cart_line.class%"
+          - "%DualHand_reusable.purchasable_map%"
+        tags:
+            - { name: doctrine.event_listener, event: loadClassMetadata }
