@@ -1,11 +1,11 @@
 <?php
 
-namespace ReusableBundle\Entity\Abstracts;
+namespace Acme\ReusableBundle\Entity\Abstracts;
 
-use ReusableBundle\Model\Interfaces\CartInterface;
-use ReusableBundle\Model\Interfaces\CartLineInterface;
-use ReusableBundle\Model\Interfaces\PurchasableInterface;
-use ReusableBundle\Model\Traits\IdentifiableTrait;
+use Acme\ReusableBundle\Model\Interfaces\CartInterface;
+use Acme\ReusableBundle\Model\Interfaces\CartLineInterface;
+use Acme\ReusableBundle\Model\Interfaces\PurchasableInterface;
+use Acme\ReusableBundle\Model\Traits\IdentifiableTrait;
 
 /**
  * Class AbstractCartLine.
@@ -20,7 +20,6 @@ abstract class AbstractCartLine implements CartLineInterface
      * @var CartInterface
      */
     protected $cart;
-
 
     /**
      * @var PurchasableInterface
@@ -94,7 +93,7 @@ abstract class AbstractCartLine implements CartLineInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function __toString()
     {

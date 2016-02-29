@@ -1,7 +1,6 @@
 <?php
 
-namespace ReusableBundle\Model\Interfaces;
-
+namespace Acme\ReusableBundle\Model\Interfaces;
 
 interface PurchasableInterface
 {
@@ -36,5 +35,4 @@ interface PurchasableInterface
      * @return PurchasableInterface Self object
      */
     public function setTitle($title);
-
 }

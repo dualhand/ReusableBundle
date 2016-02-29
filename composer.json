@@ -16,6 +16,6 @@
         "sonata-project/easy-extends-bundle": "^2.1"
     },
     "autoload": {
-        "psr-4": { "ReusableBundle\\": "" }
+        "psr-4": { "Acme\\ReusableBundle\\": "" }
     }
 }

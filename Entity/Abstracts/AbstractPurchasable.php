@@ -1,9 +1,9 @@
 <?php
 
-namespace ReusableBundle\Entity\Abstracts;
+namespace Acme\ReusableBundle\Entity\Abstracts;
 
-use ReusableBundle\Model\Interfaces\PurchasableInterface;
-use ReusableBundle\Model\Traits\IdentifiableTrait;
+use Acme\ReusableBundle\Model\Interfaces\PurchasableInterface;
+use Acme\ReusableBundle\Model\Traits\IdentifiableTrait;
 
 /**
  * @author Germán Figna <gfigna@wearemarketing.com>
@@ -76,7 +76,6 @@ abstract class AbstractPurchasable implements PurchasableInterface
 
         return $this;
     }
-
 
     /**
      * Set price.

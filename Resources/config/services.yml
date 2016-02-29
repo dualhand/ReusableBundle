@@ -1,8 +1,8 @@
 services:
-    mapping.listener:
-        class: ReusableBundle\EventListener\MappingSubscriber
+    acme_mapping_listener:
+        class: Acme\ReusableBundle\EventListener\MappingSubscriber
         arguments:
-          - %grb.cart.class%
-          - %grb.cart_line.class%
+          - %acme_reusable.cart.class%
+          - %acme_reusable.cart_line.class%
         tags:
             - { name: doctrine.event_listener, event: loadClassMetadata }

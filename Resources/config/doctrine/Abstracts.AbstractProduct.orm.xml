@@ -4,7 +4,7 @@
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                   http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <mapped-superclass name="ReusableBundle\Entity\Abstracts\AbstractProduct">
+    <mapped-superclass name="Acme\ReusableBundle\Entity\Abstracts\AbstractProduct">
         <field name="description" column="description" type="string" />
     </mapped-superclass>
 

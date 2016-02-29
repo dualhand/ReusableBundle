@@ -1,9 +1,9 @@
 <?php
 
-namespace ReusableBundle\Entity\Abstracts;
+namespace Acme\ReusableBundle\Entity\Abstracts;
 
-use ReusableBundle\Model\Interfaces\ProductInterface;
-use ReusableBundle\Model\Traits\DateTimeTrait;
+use Acme\ReusableBundle\Model\Interfaces\ProductInterface;
+use Acme\ReusableBundle\Model\Traits\DateTimeTrait;
 
 /**
  * Class AbstractProduct.
@@ -11,7 +11,6 @@ use ReusableBundle\Model\Traits\DateTimeTrait;
  * @author Germán Figna <gfigna@wearemarketing.com>
  */
 abstract class AbstractProduct extends AbstractPurchasable implements ProductInterface
-
 {
     use DateTimeTrait;
 
@@ -30,14 +29,15 @@ abstract class AbstractProduct extends AbstractPurchasable implements ProductInt
 
     /**
      * @param string $description
+     *
      * @return AbstractProduct
      */
     public function setDescription($description)
     {
         $this->description = $description;
+
         return $this;
     }
-
 
     /**
      * @return string
@@ -46,5 +46,4 @@ abstract class AbstractProduct extends AbstractPurchasable implements ProductInt
     {
         return 'Product #'.$this->getId();
     }
-
 }

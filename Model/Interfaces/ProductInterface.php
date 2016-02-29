@@ -1,10 +1,9 @@
 <?php
 
-namespace ReusableBundle\Model\Interfaces;
+namespace Acme\ReusableBundle\Model\Interfaces;
 
 interface ProductInterface extends PurchasableInterface
 {
-
     /**
      * @param string $description
      *
@@ -18,5 +17,4 @@ interface ProductInterface extends PurchasableInterface
      * @return string Description
      */
     public function getDescription();
-
 }

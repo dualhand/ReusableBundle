@@ -1,6 +1,6 @@
 <?php
 
-namespace ReusableBundle\Model\Interfaces;
+namespace Acme\ReusableBundle\Model\Interfaces;
 
 /**
  * Class CartLineInterface.
@@ -44,5 +44,4 @@ interface CartLineInterface
      * @return int
      */
     public function getQuantity();
-
 }

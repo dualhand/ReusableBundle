@@ -1,15 +1,15 @@
 <?php
 
-namespace ReusableBundle;
+namespace Acme\ReusableBundle;
 
+use Acme\ReusableBundle\DependencyInjection\AcmeReusableExtension;
 use Doctrine\Bundle\DoctrineBundle\DependencyInjection\Compiler\DoctrineOrmMappingsPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class ReusableBundle extends Bundle
+class AcmeReusableBundle extends Bundle
 {
-
     /**
      * @param ContainerBuilder $container
      */
@@ -29,17 +29,20 @@ class ReusableBundle extends Bundle
         $locator = new Definition('Doctrine\Common\Persistence\Mapping\Driver\DefaultFileLocator', $arguments);
         $driver = new Definition('Doctrine\ORM\Mapping\Driver\XmlDriver', array($locator));
 
-        foreach ($this->extension->getEntitiesOverrides() as $configKey => $entity) {
-
+        foreach ($this->getContainerExtension()->getEntitiesOverrides() as $configKey => $entity) {
             $container->addCompilerPass(
                 new DoctrineOrmMappingsPass(
                     $driver,
-                    array("%grb.$configKey.class%"),
-                    array('grb.model_manager_name', 'orm'),
-                    "grb.use_default.$configKey"
+                    array("%acme_reusable.$configKey.class%"),
+                    array('acme_reusable.model_manager_name', 'orm'),
+                    "acme_reusable.use_default.$configKey"
                 )
             );
         }
     }
 
+    public function getContainerExtension()
+    {
+        return new AcmeReusableExtension();
+    }
 }

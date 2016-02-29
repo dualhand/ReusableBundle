@@ -1,6 +1,6 @@
 <?php
 
-namespace ReusableBundle\Model\Traits;
+namespace Acme\ReusableBundle\Model\Traits;
 
 trait IdentifiableTrait
 {

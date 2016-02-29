@@ -1,12 +1,12 @@
 <?php
 
-namespace ReusableBundle\Entity\Abstracts;
+namespace Acme\ReusableBundle\Entity\Abstracts;
 
 use Doctrine\Common\Collections\Collection;
-use ReusableBundle\Model\Interfaces\CartInterface;
-use ReusableBundle\Model\Interfaces\CartLineInterface;
-use ReusableBundle\Model\Traits\DateTimeTrait;
-use ReusableBundle\Model\Traits\IdentifiableTrait;
+use Acme\ReusableBundle\Model\Interfaces\CartInterface;
+use Acme\ReusableBundle\Model\Interfaces\CartLineInterface;
+use Acme\ReusableBundle\Model\Traits\DateTimeTrait;
+use Acme\ReusableBundle\Model\Traits\IdentifiableTrait;
 
 /**
  * Class AbstractCart.
@@ -140,8 +140,6 @@ abstract class AbstractCart implements CartInterface
     {
         return $this->quantity;
     }
-
-
 
     /**
      * @return string

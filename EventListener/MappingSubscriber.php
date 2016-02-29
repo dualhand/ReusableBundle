@@ -1,5 +1,6 @@
 <?php
-namespace ReusableBundle\EventListener;
+
+namespace Acme\ReusableBundle\EventListener;
 
 use Doctrine\ORM\Event\LoadClassMetadataEventArgs;
 use Doctrine\ORM\Events;
@@ -29,7 +30,7 @@ class MappingSubscriber
 
     public function getSubscribedEvents()
     {
-        return [ Events::loadClassMetadata ];
+        return [Events::loadClassMetadata];
     }
 
     /**
@@ -42,8 +43,7 @@ class MappingSubscriber
         $this->classMetadata = $eventArgs->getClassMetadata();
         $classMetadata = $this->classMetadata;
 
-        if($classMetadata->reflClass === $this->cartClass){
-
+        if ($classMetadata->reflClass === $this->cartClass) {
             $classMetadata->mapOneToMany(array(
 
                 'fieldName' => 'cartLines',
@@ -55,8 +55,6 @@ class MappingSubscriber
                 'orphanRemoval' => true,
 
             ));
-
         }
     }
-
 }

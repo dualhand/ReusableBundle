@@ -1,6 +1,6 @@
 <?php
 
-namespace ReusableBundle\Model\Interfaces;
+namespace Acme\ReusableBundle\Model\Interfaces;
 
 use Doctrine\Common\Collections\Collection;
 
@@ -48,7 +48,6 @@ interface CartInterface
      */
     public function setAmount($amount);
 
-
     /**
      * Sets the number of items on this cart.
      *
@@ -64,5 +63,4 @@ interface CartInterface
      * @return int Quantity
      */
     public function getQuantity();
-
 }

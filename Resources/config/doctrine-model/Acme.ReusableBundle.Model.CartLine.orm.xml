@@ -2,7 +2,7 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-    <entity name="ReusableBundle\Model\Product" table="grb_product">
+    <entity name="Acme\ReusableBundle\Model\CartLine" table="acme_cart_line">
 
     </entity>
 </doctrine-mapping>

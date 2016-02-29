@@ -1,10 +1,14 @@
 <?php
 
-namespace ReusableBundle\Model;
+namespace Acme\ReusableBundle\Model;
 
-use ReusableBundle\Entity\Abstracts\AbstractProduct;
+use Acme\ReusableBundle\Entity\Abstracts\AbstractProduct;
 
+/**
+ * Class Product.
+ *
+ * @author Germán Figna <gfigna@wearemarketing.com>
+ */
 class Product extends AbstractProduct
 {
-
 }

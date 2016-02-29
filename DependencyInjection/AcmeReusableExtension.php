@@ -1,6 +1,6 @@
 <?php
 
-namespace ReusableBundle\DependencyInjection;
+namespace Acme\ReusableBundle\DependencyInjection;
 
 use Sonata\EasyExtendsBundle\Mapper\DoctrineCollector;
 use Symfony\Component\Config\FileLocator;
@@ -9,9 +9,8 @@ use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
-class ReusableExtension extends Extension implements PrependExtensionInterface
+class AcmeReusableExtension extends Extension implements PrependExtensionInterface
 {
-
     public function getEntitiesOverrides()
     {
         return
@@ -40,9 +39,7 @@ class ReusableExtension extends Extension implements PrependExtensionInterface
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
 
         $loader->load('services.yml');
-
     }
-
 
     /**
      * @param ContainerBuilder $container
@@ -50,8 +47,8 @@ class ReusableExtension extends Extension implements PrependExtensionInterface
      */
     protected function setConfiguration(ContainerBuilder $container, $config)
     {
-        $container->setParameter('grb.model_manager_name', $config['model_manager_name']);
-        $container->setParameter('grb.orm_enabled', $config['orm_enabled']);
+        $container->setParameter('acme_reusable.model_manager_name', $config['model_manager_name']);
+        $container->setParameter('acme_reusable.orm_enabled', $config['orm_enabled']);
 
         $this->configureClass($container, $config);
     }
@@ -65,16 +62,13 @@ class ReusableExtension extends Extension implements PrependExtensionInterface
         $defaultClasses = $this->getEntitiesOverrides();
 
         foreach ($defaultClasses as $configKey => $entity) {
+            $container->setParameter("acme_reusable.$configKey.class", $config['class'][$configKey]);
 
-            $container->setParameter("grb.$configKey.class", $config['class'][$configKey]);
-
-            $container->setParameter("grb.use_default.$configKey",
+            $container->setParameter("acme_reusable.use_default.$configKey",
                 ($config['class'][$configKey] == $defaultClasses[$configKey]
                     && $config['orm_enabled'])
             );
-
         }
-
     }
 
     /**
@@ -85,7 +79,7 @@ class ReusableExtension extends Extension implements PrependExtensionInterface
     protected function addDoctrineDiscriminators(array $config)
     {
         $collector = DoctrineCollector::getInstance();
-        $purchasableClass = 'ReusableBundle\Entity\Abstracts\AbstractPurchasable';
+        $purchasableClass = 'Acme\ReusableBundle\Entity\Abstracts\AbstractPurchasable';
 
         $collector->addDiscriminator($purchasableClass, 'PROD', $config['class']['product']);
 
@@ -102,7 +96,6 @@ class ReusableExtension extends Extension implements PrependExtensionInterface
         }
     }
 
-
     /**
      * @param ContainerBuilder $container
      */
@@ -117,7 +110,7 @@ class ReusableExtension extends Extension implements PrependExtensionInterface
         $doctrineConfig = array(
             'orm' => array(
                 'resolve_target_entities' => array(
-                    'ReusableBundle\Model\Interfaces\CartInterface' => $config['class']['cart']
+                    'Acme\ReusableBundle\Model\Interfaces\CartInterface' => $config['class']['cart'],
                 ),
             ),
         );
@@ -125,6 +118,5 @@ class ReusableExtension extends Extension implements PrependExtensionInterface
         if (isset($bundles['DoctrineBundle'])) {
             $container->prependExtensionConfig('doctrine', $doctrineConfig);
         }
-
     }
 }

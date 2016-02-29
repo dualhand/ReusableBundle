@@ -1,8 +1,8 @@
 <?php
 
-namespace ReusableBundle\Model;
+namespace Acme\ReusableBundle\Model;
 
-use ReusableBundle\Entity\Abstracts\AbstractCart;
+use Acme\ReusableBundle\Entity\Abstracts\AbstractCart;
 
 /**
  * Class Cart.
