@@ -11,7 +11,6 @@ use Symfony\Component\Config\Definition\NodeInterface;
  */
 class Configuration implements ConfigurationInterface
 {
-    const PRODUCT_CLASS = 'Acme\ReusableBundle\Model\Product';
     const CART_CLASS = 'Acme\ReusableBundle\Model\Cart';
     const CART_LINE_CLASS = 'Acme\ReusableBundle\Model\CartLine';
     const MODEL_MANAGER_NAME = 'default';
@@ -31,7 +30,6 @@ class Configuration implements ConfigurationInterface
                 ->arrayNode('class')
                     ->addDefaultsIfNotSet()
                     ->children()
-                        ->scalarNode('product')->cannotBeEmpty()->defaultValue(self::PRODUCT_CLASS)->end()
                         ->scalarNode('cart')->cannotBeEmpty()->defaultValue(self::CART_CLASS)->end()
                         ->scalarNode('cart_line')->cannotBeEmpty()->defaultValue(self::CART_LINE_CLASS)->end()
                         ->arrayNode('purchasable_mapping')
