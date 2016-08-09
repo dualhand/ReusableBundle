@@ -10,6 +10,11 @@ use Acme\ReusableBundle\Model\Interfaces\PurchasableInterface;
 abstract class AbstractPurchasable implements PurchasableInterface
 {
     /**
+     * @var int
+     */
+    protected $id;
+
+    /**
      * @var string
      *
      * Product SKU
@@ -29,6 +34,26 @@ abstract class AbstractPurchasable implements PurchasableInterface
      * Product price
      */
     protected $price;
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     *
+     * @return AbstractPurchasable
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
 
     /**
      * Gets product SKU.

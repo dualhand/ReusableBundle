@@ -12,6 +12,11 @@ use Acme\ReusableBundle\Model\Interfaces\PurchasableInterface;
 abstract class AbstractCartLine implements CartLineInterface
 {
     /**
+     * @var int
+     */
+    protected $id;
+
+    /**
      * @var CartInterface
      */
     protected $cart;
@@ -32,6 +37,26 @@ abstract class AbstractCartLine implements CartLineInterface
      * Total amount
      */
     protected $amount;
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     *
+     * @return AbstractCartLine
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
 
     /**
      * {@inheritdoc}
@@ -83,6 +108,26 @@ abstract class AbstractCartLine implements CartLineInterface
     public function setQuantity($quantity)
     {
         $this->quantity = $quantity;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAmount()
+    {
+        return $this->amount;
+    }
+
+    /**
+     * @param mixed $amount
+     *
+     * @return AbstractCartLine
+     */
+    public function setAmount($amount)
+    {
+        $this->amount = $amount;
 
         return $this;
     }
