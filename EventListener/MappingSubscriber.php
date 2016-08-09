@@ -2,6 +2,8 @@
 
 namespace Acme\ReusableBundle\EventListener;
 
+use Acme\ReusableBundle\DependencyInjection\Configuration;
+use Acme\ReusableBundle\Entity\AbstractPurchasable;
 use Doctrine\ORM\Event\LoadClassMetadataEventArgs;
 use Doctrine\ORM\Events;
 use Doctrine\ORM\Mapping\ClassMetadataInfo;
@@ -20,15 +22,21 @@ class MappingSubscriber
      * @var string
      */
     protected $cartLineClass;
+    /**
+     * @var array
+     */
+    protected $purchasableMap;
 
     /**
      * @param string $cartClass
      * @param string $cartLineClass
+     * @param array  $purchasableMap
      */
-    public function __construct($cartClass, $cartLineClass)
+    public function __construct($cartClass, $cartLineClass, array $purchasableMap)
     {
         $this->cartClass = $cartClass;
         $this->cartLineClass = $cartLineClass;
+        $this->purchasableMap = $purchasableMap;
     }
 
     /**
@@ -59,6 +67,10 @@ class MappingSubscriber
                 'orphanRemoval' => true,
 
             ));
+        }
+
+        if ($classMetadata->reflClass === AbstractPurchasable::class) {
+            $classMetadata->setDiscriminatorMap($this->purchasableMap);
         }
     }
 }

@@ -21,7 +21,6 @@ class AcmeReusableExtension extends Extension implements PrependExtensionInterfa
     {
         return
             array(
-                'product' => Configuration::PRODUCT_CLASS,
                 'cart' => Configuration::CART_CLASS,
                 'cart_line' => Configuration::CART_LINE_CLASS,
         );
@@ -39,9 +38,7 @@ class AcmeReusableExtension extends Extension implements PrependExtensionInterfa
         $config = $this->processConfiguration($configuration, $configs);
 
         $this->setConfiguration($container, $config);
-
-        $this->addDoctrineDiscriminators($config);
-
+        
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
 
         $loader->load('services.yml');
@@ -99,30 +96,13 @@ class AcmeReusableExtension extends Extension implements PrependExtensionInterfa
                 ($config['class'][$configKey] == $defaultClasses[$configKey] && $config['orm_enabled'])
             );
         }
-    }
 
-    /**
-     * @param array $config
-     *
-     * @throws \Exception
-     */
-    protected function addDoctrineDiscriminators(array $config)
-    {
-        $collector = DoctrineCollector::getInstance();
-        $purchasableClass = 'Acme\ReusableBundle\Entity\AbstractPurchasable';
-
-        $collector->addDiscriminator($purchasableClass, 'PROD', $config['class']['product']);
-
-        $types = $config['class']['purchasable_mapping'];
-        foreach ($types as $type) {
-            list($key, $class) = array_values($type);
-
-            if (!class_exists($class)) {
-                throw new \Exception(sprintf('Class %s not found', $class));
-            }
-
-            //Add custom type
-            $collector->addDiscriminator($purchasableClass, $key, $class);
+        $purchasableMap = array();
+        foreach ($config['class']['purchasable_mapping'] as $discriminator) {
+            $purchasableMap[$discriminator['key']] = $discriminator['class'];
         }
+
+        $container->setParameter("acme_reusable.purchasable_map", $purchasableMap);
     }
+
 }
