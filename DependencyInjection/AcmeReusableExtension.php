@@ -9,8 +9,14 @@ use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
+/**
+ * Class AcmeReusableExtension.
+ */
 class AcmeReusableExtension extends Extension implements PrependExtensionInterface
 {
+    /**
+     * @return array
+     */
     public function getEntitiesOverrides()
     {
         return
@@ -43,6 +49,30 @@ class AcmeReusableExtension extends Extension implements PrependExtensionInterfa
 
     /**
      * @param ContainerBuilder $container
+     */
+    public function prepend(ContainerBuilder $container)
+    {
+        $configs = $container->getExtensionConfig($this->getAlias());
+        $config = $this->processConfiguration(new Configuration(), $configs);
+
+        // get all bundles
+        $bundles = $container->getParameter('kernel.bundles');
+
+        $doctrineConfig = array(
+            'orm' => array(
+                'resolve_target_entities' => array(
+                    'Acme\ReusableBundle\Model\Interfaces\CartInterface' => $config['class']['cart'],
+                ),
+            ),
+        );
+
+        if (isset($bundles['DoctrineBundle'])) {
+            $container->prependExtensionConfig('doctrine', $doctrineConfig);
+        }
+    }
+
+    /**
+     * @param ContainerBuilder $container
      * @param $config
      */
     protected function setConfiguration(ContainerBuilder $container, $config)
@@ -64,9 +94,9 @@ class AcmeReusableExtension extends Extension implements PrependExtensionInterfa
         foreach ($defaultClasses as $configKey => $entity) {
             $container->setParameter("acme_reusable.$configKey.class", $config['class'][$configKey]);
 
-            $container->setParameter("acme_reusable.use_default.$configKey",
-                ($config['class'][$configKey] == $defaultClasses[$configKey]
-                    && $config['orm_enabled'])
+            $container->setParameter(
+                "acme_reusable.use_default.$configKey",
+                ($config['class'][$configKey] == $defaultClasses[$configKey] && $config['orm_enabled'])
             );
         }
     }
@@ -93,30 +123,6 @@ class AcmeReusableExtension extends Extension implements PrependExtensionInterfa
 
             //Add custom type
             $collector->addDiscriminator($purchasableClass, $key, $class);
-        }
-    }
-
-    /**
-     * @param ContainerBuilder $container
-     */
-    public function prepend(ContainerBuilder $container)
-    {
-        $configs = $container->getExtensionConfig($this->getAlias());
-        $config = $this->processConfiguration(new Configuration(), $configs);
-
-        // get all bundles
-        $bundles = $container->getParameter('kernel.bundles');
-
-        $doctrineConfig = array(
-            'orm' => array(
-                'resolve_target_entities' => array(
-                    'Acme\ReusableBundle\Model\Interfaces\CartInterface' => $config['class']['cart'],
-                ),
-            ),
-        );
-
-        if (isset($bundles['DoctrineBundle'])) {
-            $container->prependExtensionConfig('doctrine', $doctrineConfig);
         }
     }
 }

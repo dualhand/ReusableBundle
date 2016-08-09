@@ -9,12 +9,15 @@
         <id name="id" type="integer" column="id">
             <generator strategy="AUTO"/>
         </id>
-        <field name="quantity" column="quantity" type="integer" nullable="false" />
+        <field name="quantity" column="quantity" type="integer" nullable="false"/>
 
         <many-to-one target-entity="Acme\ReusableBundle\Entity\Abstracts\AbstractPurchasable" field="purchasable">
-            <cascade><cascade-persist/></cascade>
+            <cascade>
+                <cascade-persist/>
+            </cascade>
         </many-to-one>
-        <many-to-one target-entity="Acme\ReusableBundle\Model\Interfaces\CartInterface" inversed-by="cartLines" field="cart" />
+        <many-to-one target-entity="Acme\ReusableBundle\Model\Interfaces\CartInterface" inversed-by="cartLines"
+                     field="cart"/>
     </mapped-superclass>
 
 </doctrine-mapping>

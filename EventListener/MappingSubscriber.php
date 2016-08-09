@@ -6,6 +6,9 @@ use Doctrine\ORM\Event\LoadClassMetadataEventArgs;
 use Doctrine\ORM\Events;
 use Doctrine\ORM\Mapping\ClassMetadataInfo;
 
+/**
+ * Class MappingSubscriber.
+ */
 class MappingSubscriber
 {
     /**
@@ -28,20 +31,21 @@ class MappingSubscriber
         $this->cartLineClass = $cartLineClass;
     }
 
+    /**
+     * @return array
+     */
     public function getSubscribedEvents()
     {
         return [Events::loadClassMetadata];
     }
 
     /**
-     * @var ClassMetadataInfo
+     * @param LoadClassMetadataEventArgs $eventArgs
      */
-    protected $classMetadata;
-
     public function loadClassMetadata(LoadClassMetadataEventArgs $eventArgs)
     {
-        $this->classMetadata = $eventArgs->getClassMetadata();
-        $classMetadata = $this->classMetadata;
+        /** @var ClassMetadataInfo $classMetadata */
+        $classMetadata = $eventArgs->getClassMetadata();
 
         if ($classMetadata->reflClass === $this->cartClass) {
             $classMetadata->mapOneToMany(array(

@@ -3,15 +3,12 @@
 namespace Acme\ReusableBundle\Entity\Abstracts;
 
 use Acme\ReusableBundle\Model\Interfaces\PurchasableInterface;
-use Acme\ReusableBundle\Model\Traits\IdentifiableTrait;
 
 /**
- * @author Germán Figna <gfigna@wearemarketing.com>
+ * Class AbstractPurchasable.
  */
 abstract class AbstractPurchasable implements PurchasableInterface
 {
-    use IdentifiableTrait;
-
     /**
      * @var string
      *

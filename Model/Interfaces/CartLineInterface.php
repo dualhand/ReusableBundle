@@ -4,13 +4,11 @@ namespace Acme\ReusableBundle\Model\Interfaces;
 
 /**
  * Class CartLineInterface.
- *
- * @author Germán Figna <gfigna@wearemarketing.com>
  */
 interface CartLineInterface
 {
     /**
-     * @param $cart
+     * @param CartInterface $cart
      *
      * @return CartLineInterface Self object
      */
@@ -22,7 +20,7 @@ interface CartLineInterface
     public function getCart();
 
     /**
-     * @param $purchasable
+     * @param PurchasableInterface $purchasable
      *
      * @return CartLineInterface Self object
      */
@@ -34,7 +32,7 @@ interface CartLineInterface
     public function getPurchasable();
 
     /**
-     * @param $quantity
+     * @param int $quantity
      *
      * @return CartLineInterface Self object
      */

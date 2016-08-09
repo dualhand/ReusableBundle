@@ -5,23 +5,19 @@ namespace Acme\ReusableBundle\Entity\Abstracts;
 use Doctrine\Common\Collections\Collection;
 use Acme\ReusableBundle\Model\Interfaces\CartInterface;
 use Acme\ReusableBundle\Model\Interfaces\CartLineInterface;
-use Acme\ReusableBundle\Model\Traits\DateTimeTrait;
-use Acme\ReusableBundle\Model\Traits\IdentifiableTrait;
 
 /**
  * Class AbstractCart.
- *
- * @author Germán Figna <gfigna@wearemarketing.com>
  */
 abstract class AbstractCart implements CartInterface
 {
-    use IdentifiableTrait,
-        DateTimeTrait;
+    /**
+     * @var int
+     */
+    protected $id;
 
     /**
      * @var Collection
-     *
-     * Lines
      */
     protected $cartLines;
 
@@ -32,22 +28,30 @@ abstract class AbstractCart implements CartInterface
 
     /**
      * @var int
-     *
-     * Quantity
      */
     protected $quantity;
 
     /**
-     * @var OrderInterface
-     *
-     * The associated order entity. It is a one-one
-     * relation and can be null on the Cart side
+     * @return int
      */
-    protected $order;
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
-     * Set cart lines.
+     * @param int $id
      *
+     * @return AbstractCart
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
      * @param Collection $cartLines Cart Lines
      *
      * @return AbstractCart Self object
@@ -60,8 +64,6 @@ abstract class AbstractCart implements CartInterface
     }
 
     /**
-     * Get lines.
-     *
      * @return Collection CartLine collection
      */
     public function getCartLines()
@@ -70,8 +72,6 @@ abstract class AbstractCart implements CartInterface
     }
 
     /**
-     * Add Cart Line.
-     *
      * @param CartLineInterface $cartLine Cart line
      *
      * @return AbstractCart Self object
@@ -86,8 +86,6 @@ abstract class AbstractCart implements CartInterface
     }
 
     /**
-     * Remove Cart Line.
-     *
      * @param CartLineInterface $cartLine Cart line
      *
      * @return AbstractCart Self object
@@ -100,8 +98,6 @@ abstract class AbstractCart implements CartInterface
     }
 
     /**
-     * Set amount.
-     *
      * @param float $amount
      *
      * @return AbstractCart Self object
@@ -114,8 +110,6 @@ abstract class AbstractCart implements CartInterface
     }
 
     /**
-     * Get amount.
-     *
      * @return float Amount
      */
     public function getAmount()

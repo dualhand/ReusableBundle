@@ -6,6 +6,9 @@ use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Symfony\Component\Config\Definition\NodeInterface;
 
+/**
+ * Class Configuration.
+ */
 class Configuration implements ConfigurationInterface
 {
     const PRODUCT_CLASS = 'Acme\ReusableBundle\Model\Product';

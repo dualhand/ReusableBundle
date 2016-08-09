@@ -2,6 +2,9 @@
 
 namespace Acme\ReusableBundle\Model\Interfaces;
 
+/**
+ * Interface ProductInterface.
+ */
 interface ProductInterface extends PurchasableInterface
 {
     /**

@@ -4,6 +4,9 @@ namespace Acme\ReusableBundle\Model\Interfaces;
 
 use Doctrine\Common\Collections\Collection;
 
+/**
+ * Interface CartInterface.
+ */
 interface CartInterface
 {
     /**

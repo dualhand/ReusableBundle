@@ -5,17 +5,12 @@ namespace Acme\ReusableBundle\Entity\Abstracts;
 use Acme\ReusableBundle\Model\Interfaces\CartInterface;
 use Acme\ReusableBundle\Model\Interfaces\CartLineInterface;
 use Acme\ReusableBundle\Model\Interfaces\PurchasableInterface;
-use Acme\ReusableBundle\Model\Traits\IdentifiableTrait;
 
 /**
  * Class AbstractCartLine.
- *
- * @author Germán Figna <gfigna@wearemarketing.com>
  */
 abstract class AbstractCartLine implements CartLineInterface
 {
-    use IdentifiableTrait;
-
     /**
      * @var CartInterface
      */
@@ -97,6 +92,6 @@ abstract class AbstractCartLine implements CartLineInterface
      */
     public function __toString()
     {
-        return "{$this->getQuantity()}x {$this->getPurchasable()->getTitle()} {$this->getPurchasableAmount()}";
+        return "{$this->getQuantity()}x {$this->getPurchasable()->getTitle()}";
     }
 }

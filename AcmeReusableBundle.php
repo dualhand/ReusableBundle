@@ -8,6 +8,9 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
+/**
+ * Class AcmeReusableBundle.
+ */
 class AcmeReusableBundle extends Bundle
 {
     /**
@@ -18,6 +21,14 @@ class AcmeReusableBundle extends Bundle
         parent::build($container);
 
         $this->buildOrmCompilerPass($container);
+    }
+
+    /**
+     * @return AcmeReusableExtension
+     */
+    public function getContainerExtension()
+    {
+        return new AcmeReusableExtension();
     }
 
     /**
@@ -39,10 +50,5 @@ class AcmeReusableBundle extends Bundle
                 )
             );
         }
-    }
-
-    public function getContainerExtension()
-    {
-        return new AcmeReusableExtension();
     }
 }

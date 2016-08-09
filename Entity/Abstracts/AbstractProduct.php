@@ -3,21 +3,41 @@
 namespace Acme\ReusableBundle\Entity\Abstracts;
 
 use Acme\ReusableBundle\Model\Interfaces\ProductInterface;
-use Acme\ReusableBundle\Model\Traits\DateTimeTrait;
 
 /**
  * Class AbstractProduct.
- *
- * @author Germán Figna <gfigna@wearemarketing.com>
  */
 abstract class AbstractProduct extends AbstractPurchasable implements ProductInterface
 {
-    use DateTimeTrait;
+    /**
+     * @var int
+     */
+    protected $id;
 
     /**
      * @var string
      */
     protected $description;
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     *
+     * @return AbstractProduct
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
 
     /**
      * @return string
