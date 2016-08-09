@@ -1,6 +1,6 @@
 <?php
 
-namespace Acme\ReusableBundle\Entity\Abstracts;
+namespace Acme\ReusableBundle\Entity;
 
 use Acme\ReusableBundle\Model\Interfaces\PurchasableInterface;
 
@@ -56,55 +56,7 @@ abstract class AbstractPurchasable implements PurchasableInterface
     }
 
     /**
-     * Gets product SKU.
-     *
-     * @return string
-     */
-    public function getSku()
-    {
-        return $this->sku;
-    }
-
-    /**
-     * Sets product SKU.
-     *
-     * @param string $sku
-     *
-     * @return $this Self object
-     */
-    public function setSku($sku)
-    {
-        $this->sku = $sku;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
-    /**
-     * @param string $title
-     *
-     * @return PurchasableInterface
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    /**
-     * Set price.
-     *
-     * @param float $amount Price
-     *
-     * @return $this Self object
+     * {@inheritdoc}
      */
     public function setPrice($amount)
     {
@@ -114,12 +66,46 @@ abstract class AbstractPurchasable implements PurchasableInterface
     }
 
     /**
-     * Get price.
-     *
-     * @return float Price
+     * {@inheritdoc}
      */
     public function getPrice()
     {
         return $this->price;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getSku()
+    {
+        return $this->sku;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setSku($sku)
+    {
+        $this->sku = $sku;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
     }
 }

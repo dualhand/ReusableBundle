@@ -109,7 +109,7 @@ class AcmeReusableExtension extends Extension implements PrependExtensionInterfa
     protected function addDoctrineDiscriminators(array $config)
     {
         $collector = DoctrineCollector::getInstance();
-        $purchasableClass = 'Acme\ReusableBundle\Entity\Abstracts\AbstractPurchasable';
+        $purchasableClass = 'Acme\ReusableBundle\Entity\AbstractPurchasable';
 
         $collector->addDiscriminator($purchasableClass, 'PROD', $config['class']['product']);
 

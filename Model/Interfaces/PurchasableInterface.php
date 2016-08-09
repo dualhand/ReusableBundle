@@ -8,15 +8,23 @@ namespace Acme\ReusableBundle\Model\Interfaces;
 interface PurchasableInterface
 {
     /**
-     * Gets the variant SKU.
+     * @return float
+     */
+    public function getPrice();
+
+    /**
+     * @param float $price
      *
+     * @return PurchasableInterface Self object
+     */
+    public function setPrice($price);
+
+    /**
      * @return string
      */
     public function getSku();
 
     /**
-     * Sets the variant SKU.
-     *
      * @param string $sku
      *
      * @return PurchasableInterface Self object
@@ -24,15 +32,11 @@ interface PurchasableInterface
     public function setSku($sku);
 
     /**
-     * Gets the variant title.
-     *
      * @return string
      */
     public function getTitle();
 
     /**
-     * Sets the variant title.
-     *
      * @param string $title
      *
      * @return PurchasableInterface Self object

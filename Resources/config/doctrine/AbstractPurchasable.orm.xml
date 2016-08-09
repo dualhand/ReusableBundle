@@ -4,7 +4,7 @@
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                   http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <entity name="Acme\ReusableBundle\Entity\Abstracts\AbstractPurchasable"
+    <entity name="Acme\ReusableBundle\Entity\AbstractPurchasable"
             table="acme_purchasable"
             inheritance-type="JOINED">
 
@@ -15,8 +15,6 @@
         <field name="title" column="title" type="string" length="255" nullable="false" />
         <field name="sku" column="sku" type="string" length="255" nullable="false" />
         <field name="price" type="float" nullable="false" />
-
-
 
     </entity>
 

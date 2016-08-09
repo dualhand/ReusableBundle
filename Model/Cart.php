@@ -2,7 +2,7 @@
 
 namespace Acme\ReusableBundle\Model;
 
-use Acme\ReusableBundle\Entity\Abstracts\AbstractCart;
+use Acme\ReusableBundle\Entity\AbstractCart;
 
 /**
  * Class Cart.
