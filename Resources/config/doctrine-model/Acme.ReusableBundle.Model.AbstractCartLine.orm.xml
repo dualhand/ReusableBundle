@@ -4,10 +4,20 @@
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                   http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <mapped-superclass name="Acme\ReusableBundle\Entity\AbstractCart">
+    <mapped-superclass name="Acme\ReusableBundle\Model\AbstractCartLine">
+
         <id name="id" type="integer" column="id">
             <generator strategy="AUTO"/>
         </id>
+        <field name="quantity" column="quantity" type="integer" nullable="false"/>
+
+        <many-to-one target-entity="Acme\ReusableBundle\Model\AbstractPurchasable" field="purchasable">
+            <cascade>
+                <cascade-persist/>
+            </cascade>
+        </many-to-one>
+        <many-to-one target-entity="Acme\ReusableBundle\Model\Interfaces\CartInterface" inversed-by="cartLines"
+                     field="cart"/>
     </mapped-superclass>
 
 </doctrine-mapping>

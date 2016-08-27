@@ -1,6 +1,6 @@
 <?php
 
-namespace Acme\ReusableBundle\Entity;
+namespace Acme\ReusableBundle\Model;
 
 use Acme\ReusableBundle\Model\Interfaces\CartInterface;
 use Acme\ReusableBundle\Model\Interfaces\CartLineInterface;

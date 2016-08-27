@@ -4,7 +4,7 @@
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                   http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <entity name="Acme\ReusableBundle\Entity\AbstractPurchasable"
+    <entity name="Acme\ReusableBundle\Model\AbstractPurchasable"
             table="acme_purchasable"
             inheritance-type="JOINED">
 
