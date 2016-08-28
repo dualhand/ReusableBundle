@@ -36,14 +36,8 @@ class AcmeReusableBundle extends Bundle
      */
     private function buildOrmCompilerPass(ContainerBuilder $container)
     {
-        $arguments = array(
-            array(
-                realpath(__DIR__.'/Resources/config/doctrine-base') => 'Acme\ReusableBundle\Model',
-            ),
-            '.orm.xml',
-        );
-
-        $locator = new Definition('Doctrine\Common\Persistence\Mapping\Driver\SymfonyFileLocator', $arguments);
+        $arguments = array(array(realpath(__DIR__.'/Resources/config/doctrine-model')), '.orm.xml');
+        $locator = new Definition('Doctrine\Common\Persistence\Mapping\Driver\DefaultFileLocator', $arguments);
         $driver = new Definition('Doctrine\ORM\Mapping\Driver\XmlDriver', array($locator));
 
         $container->addCompilerPass(
