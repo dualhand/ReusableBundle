@@ -2,9 +2,10 @@
 
 namespace Acme\ReusableBundle\EventListener;
 
-use Acme\ReusableBundle\Model\AbstractPurchasable;
+use Acme\ReusableBundle\DependencyInjection\Configuration;
+use Acme\ReusableBundle\Entity\AbstractPurchasable;
 use Doctrine\ORM\Event\LoadClassMetadataEventArgs;
-use Doctrine\ORM\Events as DoctrineEvents;
+use Doctrine\ORM\Events;
 use Doctrine\ORM\Mapping\ClassMetadataInfo;
 
 /**
@@ -43,7 +44,7 @@ class MappingSubscriber
      */
     public function getSubscribedEvents()
     {
-        return [DoctrineEvents::loadClassMetadata];
+        return [Events::loadClassMetadata];
     }
 
     /**

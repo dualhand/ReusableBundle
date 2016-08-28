@@ -1,8 +1,3 @@
-parameters:
-    acme_reusable.abstract_cart.class: 'Acme\ReusableBundle\Model\AbstractCart'
-    acme_reusable.abstract_cart_line.class: 'Acme\ReusableBundle\Model\AbstractCartLine'
-    acme_reusable.abstract_purchasable.class: 'Acme\ReusableBundle\Model\AbstractPurchasable'
-
 services:
     acme_mapping_listener:
         class: Acme\ReusableBundle\EventListener\MappingSubscriber
