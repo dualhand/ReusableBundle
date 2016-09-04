@@ -3,6 +3,7 @@
 namespace Acme\ReusableBundle\EventListener;
 
 use Acme\ReusableBundle\Model\AbstractPurchasable;
+use Acme\ReusableBundle\Traits\DeliverableTrait;
 use Doctrine\ORM\Event\LoadClassMetadataEventArgs;
 use Doctrine\ORM\Events as DoctrineEvents;
 use Doctrine\ORM\Mapping\ClassMetadataInfo;
@@ -70,6 +71,34 @@ class MappingSubscriber
 
         if ($classMetadata->reflClass === AbstractPurchasable::class) {
             $classMetadata->setDiscriminatorMap($this->purchasableMap);
+        }
+
+        if ($this->hasTrait($classMetadata->reflClass, DeliverableTrait::class)) {
+            $this->mapDeliverable($classMetadata);
+        }
+    }
+
+    /**
+     * @param \ReflectionClass $class
+     * @param string           $traitName
+     *
+     * @return bool
+     */
+    private function hasTrait(\ReflectionClass $class, $traitName)
+    {
+        return in_array($traitName, $class->getTraitNames());
+    }
+
+    /**
+     * @param ClassMetadataInfo $classMetadata
+     */
+    private function mapDeliverable(ClassMetadataInfo $classMetadata)
+    {
+        foreach (array('weight', 'length', 'width', 'height') as $field) {
+            $classMetadata->mapField(array(
+                'fieldName' => $field,
+                'type' => 'float',
+            ));
         }
     }
 }
