@@ -38,7 +38,7 @@ class AcmeReusableBundle extends Bundle
     {
         $arguments = array(
             array(
-                realpath(__DIR__.'/Resources/config/doctrine-base') => 'Acme\ReusableBundle\Model',
+                realpath(__DIR__.'/Resources/config/doctrine-model') => 'Acme\ReusableBundle\Model',
             ),
             '.orm.xml',
         );
@@ -51,7 +51,7 @@ class AcmeReusableBundle extends Bundle
                 new DoctrineOrmMappingsPass(
                     $driver,
                     array("%acme_reusable.$configKey.class%"),
-                    array('acme_reusable.model_manager_name', 'orm'),
+                    array('acme_reusable.model_manager_name'),
                     "acme_reusable.use_default.$configKey"
                 )
             );

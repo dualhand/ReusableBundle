@@ -58,7 +58,7 @@ class AcmeReusableExtension extends Extension implements PrependExtensionInterfa
         $doctrineConfig = array(
             'orm' => array(
                 'resolve_target_entities' => array(
-                    'Acme\ReusableBundle\Model\Interfaces\CartInterface' => $config['class']['cart'],
+                    'Acme\ReusableBundle\Entity\Interfaces\CartInterface' => $config['class']['cart'],
                 ),
             ),
         );
