@@ -15,6 +15,7 @@ class Configuration implements ConfigurationInterface
     const CART_LINE_CLASS = 'DualHand\ReusableBundle\Model\CartLine';
     const MODEL_MANAGER_NAME = 'default';
     const ORM_ENABLED = true;
+    const PURCHASABLE_FORM_TYPE_CLASS = 'Acme\ReusableBundle\Form\PurchasableType';
 
     /**
      * Generates the configuration tree.
@@ -45,6 +46,18 @@ class Configuration implements ConfigurationInterface
                 ->end()
                 ->scalarNode('model_manager_name')->defaultValue(self::MODEL_MANAGER_NAME)->end()
                 ->booleanNode('orm_enabled')->defaultValue(self::ORM_ENABLED)->end()
+
+                ->arrayNode('form')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->arrayNode('purchasable')
+                            ->addDefaultsIfNotSet()
+                            ->children()
+                                ->scalarNode('type_class')->cannotBeEmpty()->defaultValue(self::PURCHASABLE_FORM_TYPE_CLASS)->end()
+                            ->end()
+                        ->end()
+                    ->end()
+                ->end()
             ->end()
         ->end();
 

@@ -12,3 +12,8 @@ services:
           - "%DualHand_reusable.purchasable_map%"
         tags:
             - { name: doctrine.event_listener, event: loadClassMetadata }
+
+    acme_reusable.form.purchasable:
+        class: "%acme_reusable.form.purchasable.type_class%"
+        tags:
+            - { name: form.type }
