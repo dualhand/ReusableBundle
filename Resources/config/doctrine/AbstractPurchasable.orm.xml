@@ -7,6 +7,7 @@
     <entity name="Acme\ReusableBundle\Entity\AbstractPurchasable"
             table="acme_purchasable"
             inheritance-type="JOINED">
+        <discriminator-column name="purchasable_type" />
 
         <id name="id" type="integer" column="id">
             <generator strategy="AUTO"/>
