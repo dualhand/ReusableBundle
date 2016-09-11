@@ -26,6 +26,11 @@ class DualHandReusableExtension extends Extension implements PrependExtensionInt
         );
     }
 
+    public function getFormsOverrides()
+    {
+        return array('purchasable');
+    }
+
     /**
      * Loads and processes configuration to configure the Container.
      *
@@ -78,6 +83,7 @@ class DualHandReusableExtension extends Extension implements PrependExtensionInt
         $container->setParameter('DualHand_reusable.orm_enabled', $config['orm_enabled']);
 
         $this->configureClass($container, $config);
+        $this->configureForm($container, $config);
     }
 
     /**
@@ -105,4 +111,12 @@ class DualHandReusableExtension extends Extension implements PrependExtensionInt
         $container->setParameter("DualHand_reusable.purchasable_map", $purchasableMap);
     }
 
+    protected function configureForm(ContainerBuilder $container, $config)
+    {
+        $forms = $this->getFormsOverrides();
+
+        foreach ($forms as $form) {
+            $container->setParameter("acme_reusable.form.$form.type_class", $config['form'][$form]['type_class']);
+        }
+    }
 }
