@@ -2,6 +2,7 @@
 
 namespace DualHand\ReusableBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use DualHand\ReusableBundle\Entity\Interfaces\CartInterface;
 use DualHand\ReusableBundle\Entity\Interfaces\CartLineInterface;
@@ -30,6 +31,16 @@ abstract class AbstractCart implements CartInterface
      * @var int
      */
     protected $quantity;
+
+    /**
+     * AbstractCart constructor.
+     * @param int $id
+     */
+    public function __construct()
+    {
+        $this->cartLines = new ArrayCollection();
+    }
+
 
     /**
      * @return int
