@@ -1,10 +1,10 @@
 <?php
 
-namespace Acme\ReusableBundle\Model;
+namespace Acme\ReusableBundle\Entity;
 
 use Doctrine\Common\Collections\Collection;
-use Acme\ReusableBundle\Model\Interfaces\CartInterface;
-use Acme\ReusableBundle\Model\Interfaces\CartLineInterface;
+use Acme\ReusableBundle\Entity\Interfaces\CartInterface;
+use Acme\ReusableBundle\Entity\Interfaces\CartLineInterface;
 
 /**
  * Class AbstractCart.

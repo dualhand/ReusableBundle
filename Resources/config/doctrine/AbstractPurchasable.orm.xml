@@ -4,10 +4,18 @@
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                   http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <mapped-superclass name="Acme\ReusableBundle\Model\AbstractCart">
+    <entity name="Acme\ReusableBundle\Entity\AbstractPurchasable"
+            table="acme_purchasable"
+            inheritance-type="JOINED">
+
         <id name="id" type="integer" column="id">
             <generator strategy="AUTO"/>
         </id>
-    </mapped-superclass>
+
+        <field name="title" column="title" type="string" length="255" nullable="false" />
+        <field name="sku" column="sku" type="string" length="255" nullable="false" />
+        <field name="price" type="float" nullable="false" />
+
+    </entity>
 
 </doctrine-mapping>

@@ -1,6 +1,6 @@
 <?php
 
-namespace Acme\ReusableBundle\Model\Interfaces;
+namespace Acme\ReusableBundle\Entity\Interfaces;
 
 use Doctrine\Common\Collections\Collection;
 
