@@ -1,0 +1,26 @@
+#Acme\ReusableBundle\Model\AbstractPurchasable:
+#    properties:
+#        title:
+#            - NotBlank: ~
+#        sku:
+#            - NotBlank: ~
+#        price:
+#            - NotNull: ~
+
+Acme\ReusableBundle\Model\AbstractCart:
+    properties:
+        cartLines:
+            - Valid: ~
+            - Count:
+                min: 1
+        quantity:
+            - NotBlank: ~
+        amount:
+            - NotNull: ~
+
+Acme\ReusableBundle\Model\AbstractCartLine:
+    properties:
+        quantity:
+            - NotBlank: ~
+        amount:
+            - NotNull: ~
