@@ -1,5 +1,5 @@
 {
-    "name": "gerfigna/reusable-bundle",
+    "name": "dualhand/reusable-bundle",
     "description" : "A demo bundle",
     "type" : "symfony-bundle",
     "keywords" : [
@@ -16,6 +16,6 @@
         "sonata-project/easy-extends-bundle": "^2.1"
     },
     "autoload": {
-        "psr-4": { "Acme\\ReusableBundle\\": "" }
+        "psr-4": { "DualHand\\ReusableBundle\\": "" }
     }
 }
