@@ -25,7 +25,7 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder();
 
-        $treeBuilder->root('DualHand_reusable')
+        $treeBuilder->root('dual_hand_reusable')
             ->children()
                 ->arrayNode('class')
                     ->addDefaultsIfNotSet()
