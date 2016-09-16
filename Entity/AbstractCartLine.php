@@ -1,10 +1,10 @@
 <?php
 
-namespace Acme\ReusableBundle\Entity;
+namespace DualHand\ReusableBundle\Entity;
 
-use Acme\ReusableBundle\Entity\Interfaces\CartInterface;
-use Acme\ReusableBundle\Entity\Interfaces\CartLineInterface;
-use Acme\ReusableBundle\Entity\Interfaces\PurchasableInterface;
+use DualHand\ReusableBundle\Entity\Interfaces\CartInterface;
+use DualHand\ReusableBundle\Entity\Interfaces\CartLineInterface;
+use DualHand\ReusableBundle\Entity\Interfaces\PurchasableInterface;
 
 /**
  * Class AbstractCartLine.

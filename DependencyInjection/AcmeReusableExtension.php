@@ -1,6 +1,6 @@
 <?php
 
-namespace Acme\ReusableBundle\DependencyInjection;
+namespace DualHand\ReusableBundle\DependencyInjection;
 
 use Sonata\EasyExtendsBundle\Mapper\DoctrineCollector;
 use Symfony\Component\Config\FileLocator;
@@ -10,9 +10,9 @@ use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 /**
- * Class AcmeReusableExtension.
+ * Class DualHandReusableExtension.
  */
-class AcmeReusableExtension extends Extension implements PrependExtensionInterface
+class DualHandReusableExtension extends Extension implements PrependExtensionInterface
 {
     /**
      * @return array
@@ -58,7 +58,7 @@ class AcmeReusableExtension extends Extension implements PrependExtensionInterfa
         $doctrineConfig = array(
             'orm' => array(
                 'resolve_target_entities' => array(
-                    'Acme\ReusableBundle\Entity\Interfaces\CartInterface' => $config['class']['cart'],
+                    'DualHand\ReusableBundle\Entity\Interfaces\CartInterface' => $config['class']['cart'],
                 ),
             ),
         );
@@ -74,8 +74,8 @@ class AcmeReusableExtension extends Extension implements PrependExtensionInterfa
      */
     protected function setConfiguration(ContainerBuilder $container, $config)
     {
-        $container->setParameter('acme_reusable.model_manager_name', $config['model_manager_name']);
-        $container->setParameter('acme_reusable.orm_enabled', $config['orm_enabled']);
+        $container->setParameter('DualHand_reusable.model_manager_name', $config['model_manager_name']);
+        $container->setParameter('DualHand_reusable.orm_enabled', $config['orm_enabled']);
 
         $this->configureClass($container, $config);
     }
@@ -89,10 +89,10 @@ class AcmeReusableExtension extends Extension implements PrependExtensionInterfa
         $defaultClasses = $this->getEntitiesOverrides();
 
         foreach ($defaultClasses as $configKey => $entity) {
-            $container->setParameter("acme_reusable.$configKey.class", $config['class'][$configKey]);
+            $container->setParameter("DualHand_reusable.$configKey.class", $config['class'][$configKey]);
 
             $container->setParameter(
-                "acme_reusable.use_default.$configKey",
+                "DualHand_reusable.use_default.$configKey",
                 ($config['class'][$configKey] == $defaultClasses[$configKey] && $config['orm_enabled'])
             );
         }
@@ -102,7 +102,7 @@ class AcmeReusableExtension extends Extension implements PrependExtensionInterfa
             $purchasableMap[$discriminator['key']] = $discriminator['class'];
         }
 
-        $container->setParameter("acme_reusable.purchasable_map", $purchasableMap);
+        $container->setParameter("DualHand_reusable.purchasable_map", $purchasableMap);
     }
 
 }

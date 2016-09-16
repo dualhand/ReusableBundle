@@ -4,8 +4,8 @@
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                   http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <entity name="Acme\ReusableBundle\Entity\AbstractPurchasable"
-            table="acme_purchasable"
+    <entity name="DualHand\ReusableBundle\Entity\AbstractPurchasable"
+            table="DualHand_purchasable"
             inheritance-type="JOINED">
         <discriminator-column name="purchasable_type" />
 

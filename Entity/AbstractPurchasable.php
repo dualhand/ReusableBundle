@@ -1,8 +1,8 @@
 <?php
 
-namespace Acme\ReusableBundle\Entity;
+namespace DualHand\ReusableBundle\Entity;
 
-use Acme\ReusableBundle\Entity\Interfaces\PurchasableInterface;
+use DualHand\ReusableBundle\Entity\Interfaces\PurchasableInterface;
 
 /**
  * Class AbstractPurchasable.

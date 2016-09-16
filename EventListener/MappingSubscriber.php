@@ -1,9 +1,9 @@
 <?php
 
-namespace Acme\ReusableBundle\EventListener;
+namespace DualHand\ReusableBundle\EventListener;
 
-use Acme\ReusableBundle\Model\AbstractPurchasable;
-use Acme\ReusableBundle\Traits\DeliverableTrait;
+use DualHand\ReusableBundle\Model\AbstractPurchasable;
+use DualHand\ReusableBundle\Traits\DeliverableTrait;
 use Doctrine\ORM\Event\LoadClassMetadataEventArgs;
 use Doctrine\ORM\Events as DoctrineEvents;
 use Doctrine\ORM\Mapping\ClassMetadataInfo;

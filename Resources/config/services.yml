@@ -1,14 +1,14 @@
 parameters:
-    acme_reusable.abstract_cart.class: 'Acme\ReusableBundle\Model\AbstractCart'
-    acme_reusable.abstract_cart_line.class: 'Acme\ReusableBundle\Model\AbstractCartLine'
-    acme_reusable.abstract_purchasable.class: 'Acme\ReusableBundle\Model\AbstractPurchasable'
+    DualHand_reusable.abstract_cart.class: 'DualHand\ReusableBundle\Model\AbstractCart'
+    DualHand_reusable.abstract_cart_line.class: 'DualHand\ReusableBundle\Model\AbstractCartLine'
+    DualHand_reusable.abstract_purchasable.class: 'DualHand\ReusableBundle\Model\AbstractPurchasable'
 
 services:
-    acme_mapping_listener:
-        class: Acme\ReusableBundle\EventListener\MappingSubscriber
+    DualHand_mapping_listener:
+        class: DualHand\ReusableBundle\EventListener\MappingSubscriber
         arguments:
-          - "%acme_reusable.cart.class%"
-          - "%acme_reusable.cart_line.class%"
-          - "%acme_reusable.purchasable_map%"
+          - "%DualHand_reusable.cart.class%"
+          - "%DualHand_reusable.cart_line.class%"
+          - "%DualHand_reusable.purchasable_map%"
         tags:
             - { name: doctrine.event_listener, event: loadClassMetadata }

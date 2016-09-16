@@ -1,6 +1,6 @@
 <?php
 
-namespace Acme\ReusableBundle\DependencyInjection;
+namespace DualHand\ReusableBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -11,8 +11,8 @@ use Symfony\Component\Config\Definition\NodeInterface;
  */
 class Configuration implements ConfigurationInterface
 {
-    const CART_CLASS = 'Acme\ReusableBundle\Model\Cart';
-    const CART_LINE_CLASS = 'Acme\ReusableBundle\Model\CartLine';
+    const CART_CLASS = 'DualHand\ReusableBundle\Model\Cart';
+    const CART_LINE_CLASS = 'DualHand\ReusableBundle\Model\CartLine';
     const MODEL_MANAGER_NAME = 'default';
     const ORM_ENABLED = true;
 
@@ -25,7 +25,7 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder();
 
-        $treeBuilder->root('acme_reusable')
+        $treeBuilder->root('DualHand_reusable')
             ->children()
                 ->arrayNode('class')
                     ->addDefaultsIfNotSet()

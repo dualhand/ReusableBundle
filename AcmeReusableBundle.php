@@ -1,17 +1,17 @@
 <?php
 
-namespace Acme\ReusableBundle;
+namespace DualHand\ReusableBundle;
 
-use Acme\ReusableBundle\DependencyInjection\AcmeReusableExtension;
+use DualHand\ReusableBundle\DependencyInjection\DualHandReusableExtension;
 use Doctrine\Bundle\DoctrineBundle\DependencyInjection\Compiler\DoctrineOrmMappingsPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
- * Class AcmeReusableBundle.
+ * Class DualHandReusableBundle.
  */
-class AcmeReusableBundle extends Bundle
+class DualHandReusableBundle extends Bundle
 {
     /**
      * @param ContainerBuilder $container
@@ -24,11 +24,11 @@ class AcmeReusableBundle extends Bundle
     }
 
     /**
-     * @return AcmeReusableExtension
+     * @return DualHandReusableExtension
      */
     public function getContainerExtension()
     {
-        return new AcmeReusableExtension();
+        return new DualHandReusableExtension();
     }
 
     /**
@@ -38,7 +38,7 @@ class AcmeReusableBundle extends Bundle
     {
         $arguments = array(
             array(
-                realpath(__DIR__.'/Resources/config/doctrine-model') => 'Acme\ReusableBundle\Model',
+                realpath(__DIR__.'/Resources/config/doctrine-model') => 'DualHand\ReusableBundle\Model',
             ),
             '.orm.xml',
         );
@@ -50,9 +50,9 @@ class AcmeReusableBundle extends Bundle
             $container->addCompilerPass(
                 new DoctrineOrmMappingsPass(
                     $driver,
-                    array("%acme_reusable.$configKey.class%"),
-                    array('acme_reusable.model_manager_name'),
-                    "acme_reusable.use_default.$configKey"
+                    array("%DualHand_reusable.$configKey.class%"),
+                    array('DualHand_reusable.model_manager_name'),
+                    "DualHand_reusable.use_default.$configKey"
                 )
             );
         }

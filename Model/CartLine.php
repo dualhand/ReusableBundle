@@ -1,6 +1,6 @@
 <?php
 
-namespace Acme\ReusableBundle\Model;
+namespace DualHand\ReusableBundle\Model;
 
 /**
  * Class CartLine.

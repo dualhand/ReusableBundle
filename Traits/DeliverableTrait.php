@@ -1,6 +1,6 @@
 <?php
 
-namespace Acme\ReusableBundle\Traits;
+namespace DualHand\ReusableBundle\Traits;
 
 /**
  * Class DeliverableTrait.
